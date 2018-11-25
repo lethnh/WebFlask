@@ -37,7 +37,7 @@ body#LoginForm {
     background: #ffffff none repeat scroll 0 0;
     border-radius: 2px;
     margin: 10px auto 30px;
-    max-width: 38%;
+    min-width: 70%;
     padding: 50px 70px 70px 71px;
 }
 
@@ -60,7 +60,7 @@ body#LoginForm {
     border-color: #f0ad4e;
     color: #ffffff;
     font-size: 14px;
-    width: 100%;
+    padding: 0px 20px !important;
     height: 50px;
     line-height: 50px;
     padding: 0;

@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container bootstrap snippet">
+
+        <form action="" class="mt-30" method="post" enctype=multipart/form-data>
+            <div class="row">
+                <div class="col-sm-3"><!--left col-->
+
+
+                    <div class="text-center">
+                        <img src="../static/uploads/{{ g.user[3] }}" alt="avatar"
+                             style="height:100px;width:100px" class="avatar preview-avatar"/>
+                        <h6>Upload a different photo...</h6>
+                        <input type="file" accept="image/*"
+                               name="avatar" class="file-upload"/>
+                    </div>
+                    </hr><br>
+
+
+                    <ul class="list-group">
+                        <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span>
+                            125
+                        </li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13
+                        </li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37
+                        </li>
+                        <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span>
+                            78
+                        </li>
+                    </ul>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Social Media</div>
+                        <div class="panel-body">
+                            <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i
+                                class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i
+                                class="fa fa-google-plus fa-2x"></i>
+                        </div>
+                    </div>
+
+                </div><!--/col-3-->
+                <div class="col-sm-9">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                               role="tab" aria-controls="nav-home" aria-selected="true">Profile</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                               role="tab" aria-controls="nav-profile" aria-selected="false">History</a>
+                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
+                               role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                             aria-labelledby="nav-home-tab">
+
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="">Email</label>
+                                    <input type="email" class="form-control" name="email"
+                                           placeholder="email" value="{{ g.user[1] }}">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="">Full name</label>
+                                    <input type="text" class="form-control" name="username"
+                                           placeholder="Full name" value="{{ g.user[4] }}">
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationDefault04">Password</label>
+                                    <input type="password" class="form-control" name="password"
+                                           placeholder="">
+                                    <input type="hidden" class="form-control" value="{{ g.user[2] }}" name="password1"
+                                           placeholder="">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationDefault05">Address</label>
+                                    <input type="text" class="form-control" name="address"
+                                           placeholder="" value="{{ g.user[5] }}">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="validationDefault05">Phone number</label>
+                                    <input type="text" class="form-control" name="phonenumber"
+                                           value="{{ g.user[6] }}">
+                                </div>
+
+                            </div>
+                            {#                            <div class="col-md-6 mb-3 row">#}
+                            {#                                <div class="col-md-3">#}
+                            {#                                    <img src="../static/uploads/{{ g.user[3] }}" alt="avatar"#}
+                            {#                                         style="height:100px;width:100px" class="avatar preview-avatar"/>#}
+                            {#                                </div>#}
+                            {#                                <div class="col-md-9">#}
+                            {#                                    <input type="file" accept="image/*"#}
+                            {#                                           name="avatar" class="file-upload">#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+
+                            <button class="btn btn-primary" type="submit">Update</button>
+
+
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            ...
+                        </div>
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            ...
+                        </div>
+                    </div>
+
+
+                </div>
+            </div><!--/col-9-->
+        </form>
+    </div><!--/row-->
+    </body>
+{% endblock %}

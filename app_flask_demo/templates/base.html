@@ -13,7 +13,7 @@
 <script src="{{ url_for('static', filename='js/jquery.slim.js') }}"></script>
 <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-
+<script src="{{ url_for('static', filename='js/custom.js') }}"></script>
 <script src="{{ url_for('static', filename='js/preview_image.js') }}"></script>
 
 
@@ -29,7 +29,7 @@
                 data-toggle="collapse">
             <i class="icon md-more" aria-hidden="true"></i>
         </button>
-        <a class="navbar-brand navbar-brand-center" href="../index.html">
+        <a class="navbar-brand navbar-brand-center" href="{{ url_for('index') }}">
             <img class="navbar-brand-logo navbar-brand-logo-normal" src="../static/images/apple-touch-icon.png"
                  title="Remark">
             <img class="navbar-brand-logo navbar-brand-logo-special" src="../static/images/logo-colored@2x.png"
@@ -115,7 +115,7 @@
             <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right align-items-center">
                 {% if(g.user) %}
                     <li class="nav-item ">
-                        <a class="nav-link waves-effect waves-light waves-round" href="javascript:void(0)">
+                        <a class="nav-link  font-weight-500" href="javascript:void(0)">
                             {{ g.user[4] }}
                         </a>
                     </li>
@@ -123,14 +123,21 @@
                         <a class="nav-link navbar-avatar waves-effect waves-light waves-round" data-toggle="dropdown"
                            href="#" aria-expanded="false" data-animation="scale-up" role="button">
                 <span class="avatar avatar-online">
-           <img src="../static/uploads/{{ g.user[3] }}" alt="..." style="height: 35px;width: 35px"
-                class="">
-                  <i></i>
-                </span>
+                    {% if g.user[3] %}
+                        <img src="../static/uploads/{{ g.user[3] }}" alt="..." style="height: 35px;width: 35px"
+                             class="">
+                        <i></i>
+                    {% else %}
+                        <img src="../static/images/Users-User-Male-2-icon.png" alt="..."
+                             style="height: 35px;width: 35px"
+                             class="">
+                        <i></i>
+                    {% endif %}
+                        </span>
                         </a>
                         <div class="dropdown-menu" role="menu">
                             <a class="dropdown-item waves-effect waves-light waves-round align-items-center"
-                               href="javascript:void(0)"
+                               href="{{ url_for('profile_user') }}"
                                role="menuitem"><i class="far fa-user-circle  icon"></i> Profile</a>
                             <a class="dropdown-item waves-effect waves-light waves-round" href="javascript:void(0)"
                                role="menuitem"><i class="icon md-card" aria-hidden="true"></i> Billing</a>

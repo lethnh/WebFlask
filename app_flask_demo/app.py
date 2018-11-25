@@ -35,11 +35,7 @@ mysql.init_app(app)
 
 @app.route('/')
 def index():
-    cursor = mysql.connect().cursor()
-    cursor.execute("SELECT * FROM user  ")
-
-    user = cursor.fetchone()
-    return render_template('index.html', user=user)
+    return render_template('index.html')
 
 
 @app.route('/login', methods=('GET', 'POST'))
@@ -71,6 +67,8 @@ def register():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
+        username = request.form['username']
+        repassword = request.form['repassword']
         file = request.files['photo']
         cursor = mysql.connect().cursor()
         # if 'file' not in request.files:
@@ -85,6 +83,8 @@ def register():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         error = None
+        if password != repassword:
+            error = 'Password is un equal'
         if not email:
             error = 'Username is required.'
         elif not password:
@@ -93,13 +93,11 @@ def register():
         #     error = 'User {} is already registered.'.format(email)
         if error is None:
             cursor.execute(
-                "insert into  user(email,password,image) values ('" + email + "','" + generate_password_hash(
-                    password) + "','" + filename + "')")
+                "insert into  user(email,password,image,fullname) values ('" + email + "','" + generate_password_hash(
+                    password) + "','" + filename + "','" + username + "')")
             cursor.connection.commit()
             return redirect(url_for('login'))
-
         flash(error)
-
     return render_template('auth/register.html')
 
 
@@ -108,39 +106,39 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-# @app.route('/upload', methods=['GET', 'POST'])
-# def upload_file():
-#     if request.method == 'POST':
-#         # check if the post request has the file part
-#         if 'file' not in request.files:
-#             flash('No file part')
-#             return redirect(request.url)
-#         file = request.files['file']
-#         # if user does not select file, browser also
-#         # submit a empty part without filename
-#         if file.filename == '':
-#             flash('No selected file')
-#             return redirect(request.url)
-#         if file and allowed_file(file.filename):
-#             filename = secure_filename(file.filename)
-#             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-#             return render_template('index.html',
-#                                    filename=filename)
-#     return '''
-#     <!doctype html>
-#     <title>Upload new File</title>
-#     <h1>Upload new File</h1>
-#     <form method=post enctype=multipart/form-data>
-#       <p><input type=file name=file>
-#          <input type=submit value=Upload>
-#     </form>
-#     '''
-
-
-@app.route('/uploads/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
+@app.route('/profile', methods=('GET', 'POST'))
+def profile_user():
+    if request.method == 'POST':
+        email = request.form['email']
+        username = request.form['username']
+        password1 = request.form['password1']
+        file = request.files['avatar']
+        password = request.form['password']
+        address = request.form['address']
+        phonenumber = request.form['phonenumber']
+        cursor = mysql.connect().cursor()
+        if file.filename == '':
+            file.filename = g.user[3]
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        error = None
+        if check_password_hash(g.user[2], password1):
+            error = 'Password is un equal'
+        if not email:
+            error = 'Username is required.'
+        elif not password:
+            password = password1
+        # elif cursor.execute('SELECT id FROM user WHERE email = ?', (email,)).fetchone() is not None:
+        #     error = 'User {} is already registered.'.format(email)
+        if error is None:
+            cursor.execute(
+                "update user set email='" + email + "',  address  ='" + address + "', phone_number='" + phonenumber + "',  password='" + password + "' , fullname='" + username + "', image='" + filename + "' where id = " +
+                g.user[0] + "  ")
+            cursor.connection.commit()
+            return redirect(url_for('profile_user'))
+        flash(error)
+    return render_template('auth/profile.html')
 
 
 @app.before_request
