@@ -16,6 +16,7 @@ export class ManagerCateogryComponent implements OnInit {
   p: number = 1;
   // tslint:disable-next-line:ban-types
   isDuplicate: Boolean = false;
+  txtFname = '';
   constructor(private categoryService: CategoryService, private postService: PostService, private toastrService: ToastrService) { }
 
   ngOnInit() {

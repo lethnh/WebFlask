@@ -12,6 +12,7 @@ export class CategoryComponent implements OnInit {
   categories;
   // tslint:disable-next-line:ban-types
   show: Boolean = true;
+  txtFname = '';
   constructor(private categoryService: CategoryService) { }
 
   ngOnInit() {

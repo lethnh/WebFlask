@@ -24,7 +24,7 @@
       </thead>
       <tbody>
         <tr
-          *ngFor="let category of categories | searchFilter: txtFname.value | paginate: { itemsPerPage: 10, currentPage: p } ; let idx = index ">
+          *ngFor="let category of categories | searchFilter: txtFname | paginate: { itemsPerPage: 10, currentPage: p } ; let idx = index ">
           <th scope="row">{{ idx + 1  }}</th>
           <td>{{ category.name }}</td>
           <td><img src="{{ category.image }}" alt="" style="height: 30px;"></td>
