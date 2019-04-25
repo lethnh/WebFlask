@@ -3,7 +3,7 @@
   <div class="mb-5">
     <div class="col-12 d-flex justify-content-between align-content-center">
       <div class="form-inline mb-5 my-lg-0 ">
-        <input placeholder="Enter name" class="form-control mr-1" [(ngModel)]="txtFname" />
+        <input placeholder="Enter name" class="form-control mr-1" #txtFname />
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </div>
       <app-add-product [dataProduct]="products" class="ml-auto"></app-add-product>

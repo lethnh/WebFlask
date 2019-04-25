@@ -19,7 +19,7 @@
           <div class="form-group">
             <label for="">Name</label>
             <input type="text" class="form-control" placeholder="Post Name" id="name" [(ngModel)]="post.name"
-              name="name" required minlength="3" #postName="ngModel">
+              name="post" required minlength="3" #postName="ngModel">
           </div>
           <div class="alert alert-danger mt-3" *ngIf="postName.dirty && postName.errors?.required">
             Post Name is empty
