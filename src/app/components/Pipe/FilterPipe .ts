@@ -14,7 +14,7 @@ export class FilterPipe implements PipeTransform {
         const result = [];
         products.filter(it => {
             console.log(it);
-            if (it.name.toLowerCase().indexOf(searchString) !== -1) {
+            if (it.name.toLowerCase().indexOf(searchString.toLowerCase()) !== -1) {
                 result.push(it);
             }
         });
