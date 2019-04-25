@@ -1,9 +1,9 @@
 <div class="container mt-5">
   <div class="d-flex">
-    <form class="form-inline mb-5 my-lg-0 ">
-      <input placeholder="Enter name" class="form-control mr-1" #txtFname />
+    <div class="form-inline mb-5 my-lg-0 ">
+      <input placeholder="Enter name" class="form-control mr-1" [(ngModel)]="txtFname" />
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    </div>
     <div class="btn-group media-arrangement ml-auto" role="group">
       <button class="btn btn-outline btn-default active" id="arrangement-grid" type="button" value="gird"
         (click)="changeView('gird')"><i class="fa fa-th" aria-hidden="true"></i></button>
@@ -16,7 +16,7 @@
   <div class="product-item">
     <div class="row" *ngIf="status">
       <div class="col-sm-6 col-md-4 mb-5"
-        *ngFor="let product of products | searchFilter: txtFname.value | paginate: { itemsPerPage: 5, currentPage: p }">
+        *ngFor="let product of products | searchFilter: txtFname | paginate: { itemsPerPage: 5, currentPage: p }">
         <!-- Post-->
         <div class="post-module" routerLink="/product/{{product.id}}">
           <!-- Thumbnail-->
