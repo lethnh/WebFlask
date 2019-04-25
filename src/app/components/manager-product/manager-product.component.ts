@@ -10,6 +10,8 @@ import { ProductService } from '../../services/product.service';
   styleUrls: ['./manager-product.component.css']
 })
 export class ManagerProductComponent implements OnInit {
+  // tslint:disable-next-line:no-inferrable-types
+  p: number = 1;
   products;
   selected: Product;
   // tslint:disable-next-line:ban-types
