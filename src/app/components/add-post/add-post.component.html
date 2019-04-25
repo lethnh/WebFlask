@@ -18,7 +18,7 @@
 
           <div class="form-group">
             <label for="">Name</label>
-            <input type="text" class="form-control" placeholder="Post Name" id="post" [(ngModel)]="post.name"
+            <input type="text" class="form-control" placeholder="Post Name" id="post" [(ngModel)]="post?.name"
               name="post" required minlength="3" #postName="ngModel">
           </div>
           <div class="alert alert-danger mt-3" *ngIf="postName.dirty && postName.errors?.required">
@@ -30,7 +30,7 @@
 
           <div class="form-group">
             <label for="">Image</label>
-            <input type="text" class="form-control" placeholder="Image" [(ngModel)]="post.image" required name="image"
+            <input type="text" class="form-control" placeholder="Image" [(ngModel)]="post?.image" required name="image"
               #image="ngModel">
           </div>
           <div class="alert alert-danger mt-3" *ngIf="image.dirty && image.errors?.required">

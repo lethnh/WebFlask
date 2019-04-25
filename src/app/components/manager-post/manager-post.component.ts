@@ -13,6 +13,8 @@ export class ManagerPostComponent implements OnInit {
   categories;
   posts: Post[];
   selected;
+  // tslint:disable-next-line:no-inferrable-types
+  p: number = 1
   // tslint:disable-next-line:ban-types
   isDuplicate: Boolean = false;
   constructor(private postService: PostService, private categoryService: CategoryService, private toastrService: ToastrService) { }
