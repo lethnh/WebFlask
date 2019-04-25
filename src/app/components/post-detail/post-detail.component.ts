@@ -11,6 +11,8 @@ import { CategoryService } from '../../services/category.service';
 export class PostDetailComponent implements OnInit {
   post;
   postRelated;
+  // tslint:disable-next-line:no-inferrable-types
+  p: number = 1;
   constructor(private route: ActivatedRoute, private postService: PostService, private categoryService: CategoryService) { }
 
   ngOnInit() {

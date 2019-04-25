@@ -12,6 +12,8 @@ import { PostService } from '../../services/post.service';
 export class ManagerCateogryComponent implements OnInit {
   categories: Category[];
   selected;
+  // tslint:disable-next-line:no-inferrable-types
+  p: number = 1;
   // tslint:disable-next-line:ban-types
   isDuplicate: Boolean = false;
   constructor(private categoryService: CategoryService, private postService: PostService, private toastrService: ToastrService) { }
