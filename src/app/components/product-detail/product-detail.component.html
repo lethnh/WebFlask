@@ -1,0 +1,47 @@
+<main>
+  <div class="card" *ngIf="product">
+    <div class="card__title">
+      <div class="icon">
+        <a href="#"><i class="fa fa-arrow-left"></i></a>
+      </div>
+      <h3>New products</h3>
+    </div>
+    <div class="card__body">
+      <div class="half">
+        <div class="featured_text">
+          <h1>{{product?.name}}</h1>
+          <p class="sub">Office Chair</p>
+          <p class="price">$ {{ product?.price }}</p>
+        </div>
+        <div class="image">
+          <img src="{{product?.image}}" alt="">
+        </div>
+      </div>
+      <div class="half">
+        <div class="description">
+          <p>{{product.descritpion}}</p>
+        </div>
+        <span class="stock"><i class="fas fa-pen"></i> In stock</span>
+        <div class="reviews">
+          <ul class="stars">
+            <li><i class="fa fa-star"></i></li>
+            <li><i class="fa fa-star"></i></li>
+            <li><i class="fa fa-star"></i></li>
+            <li><i class="fa fa-star"></i></li>
+            <li><i class="fa fa-star-o"></i></li>
+          </ul>
+          <span>({{product.reviews}} reviews)</span>
+        </div>
+      </div>
+    </div>
+    <div class="card__footer">
+      <div class="recommend">
+        <p>Recommended by</p>
+        <h3>Andrew Palmer</h3>
+      </div>
+      <div class="action">
+        <button type="button">Add to cart</button>
+      </div>
+    </div>
+  </div>
+</main>

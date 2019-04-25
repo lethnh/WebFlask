@@ -1,0 +1,59 @@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Add Product
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <form #formAddProduct="ngForm" (submit)="onSubmit(formAddProduct)">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Product</h5>
+          <button type="button" class="close" id="close-modal" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!--Product Name-->
+          <div class="form-group">
+            <label for="">Name</label>
+            <input type="text" class="form-control" placeholder="Product Name" id="name" [(ngModel)]="product.name"
+              name="name" required minlength="3" #productName="ngModel">
+          </div>
+          <div class="alert alert-danger mt-3" *ngIf="productName.dirty && productName.errors?.required">
+            Product is empty
+          </div>
+          <div class="alert alert-danger mt-3" *ngIf="productName.dirty && productName.errors?.minlength">
+            Product is between 3 - 20 character
+          </div>
+          <!--Product Name-->
+          <!--Product Price-->
+          <div class="form-group">
+            <label for="">Price</label>
+            <input type="number" class="form-control" placeholder="Price" [(ngModel)]="product.price" required
+              name="price" #price="ngModel">
+          </div>
+          <div class="alert alert-danger mt-3" *ngIf="price.dirty && price.errors?.required">
+            Product is empty
+          </div>
+          <!--Product Price-->
+          <!--Product Reviews-->
+          <div class="form-group">
+            <label for="">Reviews</label>
+            <input type="number" class="form-control" placeholder="Reviews" [(ngModel)]="product.reviews" required
+              name="reviews" #reviews="ngModel">
+          </div>
+          <div class="alert alert-danger mt-3" *ngIf="reviews.dirty && reviews.errors?.required">
+            Review is empty
+          </div>
+          <!--Product Reviews-->
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button class="btn btn-primary" [disabled]="formAddProduct.invalid">Add Product</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

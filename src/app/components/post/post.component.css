@@ -1,0 +1,33 @@
+.nav-tabs-line .nav-item.open .nav-link,
+.nav-tabs-line .nav-item.open .nav-link:focus,
+.nav-tabs-line .nav-item.open .nav-link:hover,
+.nav-tabs-line .nav-item.show .nav-link,
+.nav-tabs-line .nav-item.show .nav-link:focus,
+.nav-tabs-line .nav-item.show .nav-link:hover,
+.nav-tabs-line .nav-link.active,
+.nav-tabs-line .nav-link.active:focus,
+.nav-tabs-line .nav-link.active:hover {
+  color: #3e8ef7;
+  background-color: transparent;
+  border-bottom: 2px solid #3e8ef7;
+}
+
+.nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: .215rem;
+  border-top-right-radius: .215rem;
+}
+
+.nav-tabs .nav-link {
+  color: #76838f;
+  transition: .25s;
+}
+
+.nav-tabs-line .nav-link:hover {
+  border-bottom-color: #ccd5db;
+}
+
+.nav-tabs-line .nav-link:focus,
+.nav-tabs-line .nav-link:hover {
+  background-color: transparent;
+}

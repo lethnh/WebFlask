@@ -1,0 +1,59 @@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Add Category
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <form #formAddCategory="ngForm" (submit)="onSubmit(formAddCategory)">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Category</h5>
+          <button type="button" class="close" id="close-modal" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!--Product Name-->
+          <div class="form-group">
+            <label for="">Name</label>
+            <input type="text" class="form-control" placeholder="Category Name" id="name" [(ngModel)]="category.name"
+              name="name" required minlength="3" #productName="ngModel">
+          </div>
+          <div class="alert alert-danger mt-3" *ngIf="productName.dirty && productName.errors?.required">
+            Category Name is empty
+          </div>
+          <div class="alert alert-danger mt-3" *ngIf="productName.dirty && productName.errors?.minlength">
+            Category Name is between 3 - 20 character
+          </div>
+          <!--Product Name-->
+          <!--Product Price-->
+          <div class="form-group">
+            <label for="">Image</label>
+            <input type="text" class="form-control" placeholder="Image" [(ngModel)]="category.image" required
+              name="image" #image="ngModel">
+          </div>
+          <div class="alert alert-danger mt-3" *ngIf="image.dirty && image.errors?.required">
+            Category Image is empty
+          </div>
+          <!--Product Price-->
+          <!--Product Reviews-->
+          <div class="form-group">
+            <label for="">Description</label>
+            <input type="text" class="form-control" placeholder="Description" [(ngModel)]="category.description"
+              required name="description" #description="ngModel">
+          </div>
+          <div class="alert alert-danger mt-3" *ngIf="description.dirty && description.errors?.required">
+            Category Description is empty
+          </div>
+          <!--Product Reviews-->
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button class="btn btn-primary" [disabled]="formAddCategory.invalid">Add Category</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

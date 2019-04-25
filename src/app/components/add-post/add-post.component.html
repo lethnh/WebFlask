@@ -1,0 +1,67 @@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Add Post
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <form #formAddPost="ngForm" (submit)="onSubmit(formAddPost)">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Post</h5>
+          <button type="button" class="close" id="close-modal" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label for="">Name</label>
+            <input type="text" class="form-control" placeholder="Post Name" id="name" [(ngModel)]="post.name"
+              name="name" required minlength="3" #postName="ngModel">
+          </div>
+          <div class="alert alert-danger mt-3" *ngIf="postName.dirty && postName.errors?.required">
+            Post Name is empty
+          </div>
+          <div class="alert alert-danger mt-3" *ngIf="postName.dirty && postName.errors?.minlength">
+            Post Name is between 3 - 20 character
+          </div>
+
+          <div class="form-group">
+            <label for="">Image</label>
+            <input type="text" class="form-control" placeholder="Image" [(ngModel)]="post.image" required name="image"
+              #image="ngModel">
+          </div>
+          <div class="alert alert-danger mt-3" *ngIf="image.dirty && image.errors?.required">
+            Post Image is empty
+          </div>
+
+
+          <div class="form-group">
+            <label for="">Description</label>
+            <textarea name="description" class="form-control" id="" cols="30" rows="10" required
+              [(ngModel)]="post.description" #description="ngModel"></textarea>
+          </div>
+          <div class="alert alert-danger mt-3" *ngIf="description.dirty && description.errors?.required">
+            Post Description is empty
+          </div>
+
+          <div class="form-group">
+            <label for="">Select Category</label>
+            <select class="custom-select" name="CategoryId" [(ngModel)]="post.CategoryId">
+              <option *ngFor="let category of categories" value="{{category?.id}}">{{category?.name}}</option>
+            </select>
+            <!-- <div class="alert alert-danger mt-3" *ngIf="category.dirty && category.errors?.required">
+              Category is empty
+            </div> -->
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button class="btn btn-primary" [disabled]="formAddPost.invalid">Add Post</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

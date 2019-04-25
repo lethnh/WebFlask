@@ -1,0 +1,108 @@
+<div class="mangager-category my-5">
+  <div class="text-center mb-5 text-uppercase">
+    <h1>Manager Categories</h1>
+  </div>
+  <div class="row mb-5">
+    <div class="col-12 d-flex justify-content-between align-content-center">
+      <div class="form-inline mb-5 my-lg-0 ">
+        <input placeholder="Enter name" class="form-control mr-1" [(ngModel)]="txtFname" />
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </div>
+      <app-add-category [dataCategory]="categories" class="ml-auto">
+      </app-add-category>
+    </div>
+    <table class="table table-hover my-5">
+      <thead>
+        <tr>
+          <th scope="col">STT</th>
+          <th scope="col">Name</th>
+          <th scope="col">Image</th>
+          <th scope="col">Description</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let category of categories | searchFilter: txtFname | paginate: { itemsPerPage: 10, currentPage: p } ; let idx = index ">
+          <th scope="row">{{ idx + 1  }}</th>
+          <td>{{ category.name }}</td>
+          <td><img src="{{ category.image }}" alt="" style="height: 30px;"></td>
+          <th>{{category.description}}</th>
+          <td> <button class="btn btn-primary ml-auto" (click)="showDetail(category.id)" data-toggle="modal"
+              data-target="#demo"><i class="fa fa-pencil" aria-hidden="true"></i>
+              Sửa
+            </button></td>
+          <td> <button (click)="deleteCategory(category)" class="btn btn-danger ml-auto"><i class="fa fa-trash-o"
+                aria-hidden="true"></i> Xóa
+            </button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="col-12 text-center">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="demo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form #formEditCategory="ngForm" (submit)="onSubmit(formEditCategory)">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
+          <button type="button" class="close" id="close-modal-2" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="selected">
+            <!--Product Name-->
+            <input type="hidden" id="id" [(ngModel)]="selected.id" name="id" #id="ngModel">
+            <div class="form-group">
+              <label for="">Name</label>
+              <input type="text" class="form-control" placeholder="Category Name" id="name" [(ngModel)]="selected.name"
+                name="name" required minlength="3" #productName="ngModel" (change)="verifyDuplicate($event)">
+            </div>
+            <div class="alert alert-danger mt-3" *ngIf="isDuplicate">
+              Category name is duplicate
+            </div>
+            <div class="alert alert-danger mt-3" *ngIf="productName.dirty && productName.errors?.required">
+              Category is empty
+            </div>
+            <div class="alert alert-danger mt-3" *ngIf="productName.dirty && productName.errors?.minlength">
+              Category is between 3 - 20 character
+            </div>
+            <!--Product Name-->
+            <!--Product Price-->
+            <div class="form-group">
+              <label for="">Image</label>
+              <input type="text" class="form-control" placeholder="Category Image" [(ngModel)]="selected.image" required
+                name="image" #image="ngModel">
+            </div>
+            <div class="alert alert-danger mt-3" *ngIf="image.dirty && image.errors?.required">
+              Category is empty
+            </div>
+            <!--Product Price-->
+            <!--Product Reviews-->
+            <div class="form-group">
+              <label for="">Description</label>
+              <input type="text" class="form-control" placeholder="Category Description"
+                [(ngModel)]="selected.description" required name="desc" #desc="ngModel">
+            </div>
+            <div class="alert alert-danger mt-3" *ngIf="desc.dirty && desc.errors?.required">
+              Description is empty
+            </div>
+            <!--Product Reviews-->
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary" [disabled]="formEditCategory.invalid" dismiss="modal">Save
+                Product</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
