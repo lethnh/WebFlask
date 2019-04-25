@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CategoryService {
 
-  private urlAPI = 'http://5ca73f898e58df0014602f4a.mockapi.io/Category';
+  private urlAPI = 'https://5ca73f898e58df0014602f4a.mockapi.io/Category';
   constructor(private http: HttpClient) { }
 
   addCategory(category): Observable<Category> {

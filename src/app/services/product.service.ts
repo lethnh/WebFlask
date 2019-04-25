@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class ProductService {
   // private data = DataProduct;
   private data = [...DataProduct];
-  private urlAPI = 'http://5ca73f898e58df0014602f4a.mockapi.io/products';
+  private urlAPI = 'https://5ca73f898e58df0014602f4a.mockapi.io/products';
   constructor(private http: HttpClient) { }
 
   addProduct(product): Observable<Product> {

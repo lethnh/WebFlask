@@ -8,7 +8,7 @@ import { Post } from '../components/post/Post';
   providedIn: 'root'
 })
 export class PostService {
-  private urlAPI = 'http://5ca73f898e58df0014602f4a.mockapi.io/Category';
+  private urlAPI = 'https://5ca73f898e58df0014602f4a.mockapi.io/Category';
   constructor(private http: HttpClient) { }
 
   addPost(id, post): Observable<Post> {
