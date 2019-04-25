@@ -15,6 +15,7 @@ export class ProductComponent implements OnInit {
   status: Boolean = true;
   // tslint:disable-next-line:no-inferrable-types
   p: number = 1;
+  txtFname;
 
   constructor(private productService: ProductService, private toastrService: ToastrService) { }
 

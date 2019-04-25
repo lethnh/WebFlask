@@ -16,7 +16,7 @@
   <div class="product-item">
     <div class="row" *ngIf="status">
       <div class="col-sm-6 col-md-4 mb-5"
-        *ngFor="let product of products | searchFilter: txtFname | paginate: { itemsPerPage: 5, currentPage: p }">
+        *ngFor="let product of products | searchFilter: txtFname.value | paginate: { itemsPerPage: 5, currentPage: p }">
         <!-- Post-->
         <div class="post-module" routerLink="/product/{{product.id}}">
           <!-- Thumbnail-->
@@ -48,7 +48,7 @@
 
     <div class="row" *ngIf="status===false">
       <div class="col-sm-6 col-md-6 mb-5"
-        *ngFor="let product of products | searchFilter: txtFname | paginate: { itemsPerPage: 5, currentPage: p }">
+        *ngFor="let product of products | searchFilter: txtFname.value | paginate: { itemsPerPage: 5, currentPage: p }">
         <div class="blog-card" routerLink="/product/{{product.id}}">
           <div class=" meta">
             <div class="photo">

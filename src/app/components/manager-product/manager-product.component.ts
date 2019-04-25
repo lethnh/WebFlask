@@ -14,6 +14,7 @@ export class ManagerProductComponent implements OnInit {
   p: number = 1;
   products;
   selected: Product;
+  txtFname;
   // tslint:disable-next-line:ban-types
   isDuplicate: Boolean = false;
   constructor(private productService: ProductService, private route: ActivatedRoute, private toastrService: ToastrService) { }
