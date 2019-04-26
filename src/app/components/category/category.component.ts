@@ -18,6 +18,8 @@ export class CategoryComponent implements OnInit {
   // tslint:disable-next-line:ban-types
   show: Boolean = true;
   txtFname = '';
+  // tslint:disable-next-line:no-inferrable-types
+  p: number = 1;
   constructor(private categoryService: CategoryService) { }
 
   ngOnInit() {
