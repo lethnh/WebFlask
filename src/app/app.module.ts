@@ -27,6 +27,7 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
 import { AddCategoryComponent } from './components/add-category/add-category.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { ManagerPostComponent } from './components/manager-post/manager-post.component';
+import { FilterPipe2 } from './components/Pipe/FilterPipe2';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { ManagerPostComponent } from './components/manager-post/manager-post.com
     AddCategoryComponent,
     AddPostComponent,
     ManagerPostComponent,
+    FilterPipe2,
   ],
   imports: [
     BrowserModule,

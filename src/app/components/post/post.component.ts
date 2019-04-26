@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { CategoryService } from '../../services/category.service';
+import { Category } from '../category/Category';
 
 @Component({
   selector: 'app-post',
@@ -8,9 +9,12 @@ import { CategoryService } from '../../services/category.service';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-  categorys;
+  categorys: Category[];
+  categorysPosts;
+  posts = [];
   // tslint:disable-next-line:no-inferrable-types
   p: number = 1;
+  txtFname = '';
   constructor(private postService: PostService, private categoryService: CategoryService) { }
 
   ngOnInit() {
@@ -27,7 +31,12 @@ export class PostComponent implements OnInit {
   getListCategory() {
     this.categoryService.getListCategory().subscribe(data => {
       this.categorys = data;
-      console.log(data);
+      this.categorys.forEach(element => {
+        this.categorysPosts = [...element.posts];
+        this.categorysPosts.forEach(elementTwo => {
+          this.posts.push(elementTwo);
+        });
+      });
     });
   }
 

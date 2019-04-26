@@ -4,4 +4,5 @@ export class Category {
     image: string;
     description: string;
     posts: [];
+  p: any;
 }

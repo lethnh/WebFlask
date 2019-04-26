@@ -2,11 +2,15 @@
   <div class="text-center mb-5 text-uppercase">
     <h1>Posts</h1>
   </div>
-  <div class="row">
-    <div class="col-lg-8">
-      <div *ngFor="let category of categorys">
+  <div class="form-inline mb-5 my-lg-0 ">
+    <div class="form-inline mb-5 my-lg-0 ">
+      <input placeholder="Enter name" class="form-control mr-1" [(ngModel)]="txtFname" />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </div>
+    <div class="row">
+      <div class="col-lg-8">
         <div class="media shadow mb-5"
-          *ngFor="let post of category.posts | paginate: { itemsPerPage: 1, currentPage: p }">
+          *ngFor="let post of posts | searchFilter2: txtFname | paginate: { itemsPerPage: 10, currentPage: p }">
           <a routerLink="/Category/{{post.CategoryId}}/posts/{{post.id}}" class="w-25 mr-3">
             <img src="{{post.image}}" class="align-self-start img-fluid" alt="..." />
           </a>
@@ -23,45 +27,44 @@
               lacinia congue felis in faucibus.</p>
           </div>
         </div>
-      </div>
-      <div class="col-12 text-center">
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="d-flex">
-        <div class="btn-group media-arrangement ml-auto" role="group">
-          <button class="btn btn-outline btn-default" routerLink="/manager-post"><i class="fa fa-cog"
-              aria-hidden="true"></i></button>
+        <div class="col-12 text-center">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
         </div>
       </div>
-      <div class="card mb-2" style="width: 18rem;">
-        <img src="http://lorempixel.com/640/480/city" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="">Read More</a>
+      <div class="col-lg-4">
+        <div class="d-flex">
+          <div class="btn-group media-arrangement ml-auto" role="group">
+            <button class="btn btn-outline btn-default" routerLink="/manager-post"><i class="fa fa-cog"
+                aria-hidden="true"></i></button>
+          </div>
         </div>
-      </div>
-      <div class="card mb-2" style="width: 18rem;">
-        <img src="http://lorempixel.com/640/480/city" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="">Read More</a>
+        <div class="card mb-2" style="width: 18rem;">
+          <img src="http://lorempixel.com/640/480/city" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="">Read More</a>
+          </div>
         </div>
-      </div>
-      <div class="card mb-2" style="width: 18rem;">
-        <img src="http://lorempixel.com/640/480/city" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="">Read More</a>
+        <div class="card mb-2" style="width: 18rem;">
+          <img src="http://lorempixel.com/640/480/city" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="">Read More</a>
+          </div>
+        </div>
+        <div class="card mb-2" style="width: 18rem;">
+          <img src="http://lorempixel.com/640/480/city" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="">Read More</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
