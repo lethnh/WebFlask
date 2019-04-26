@@ -2,7 +2,7 @@
   <div class="card" *ngIf="product">
     <div class="card__title">
       <div class="icon">
-        <a href="#"><i class="fa fa-arrow-left"></i></a>
+        <a (click)="goBack()" style="cursor: pointer;"><i class="fa fa-arrow-left"></i></a>
       </div>
       <h3>New products</h3>
     </div>

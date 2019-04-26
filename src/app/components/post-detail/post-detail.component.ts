@@ -15,7 +15,7 @@ export class PostDetailComponent implements OnInit {
   // tslint:disable-next-line:no-inferrable-types
   p: number = 1;
   constructor(private route: ActivatedRoute, private postService: PostService,
-    private categoryService: CategoryService, private location: Location) { }
+              private categoryService: CategoryService, private location: Location) { }
 
   ngOnInit() {
     this.getPost();

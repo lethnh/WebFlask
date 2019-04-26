@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from '../product/Product';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { Product } from '../product/Product';
 })
 export class ProductDetailComponent implements OnInit {
   product: Product;
-  constructor(private productService: ProductService, private route: ActivatedRoute) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute, private location: Location) { }
 
   ngOnInit() {
     this.getProduct();
@@ -25,5 +26,8 @@ export class ProductDetailComponent implements OnInit {
   }
   save() {
     this.productService.editProduct(this.product).subscribe(data => this.product = data);
+  }
+  goBack(): void {
+    this.location.back();
   }
 }
