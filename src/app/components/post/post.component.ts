@@ -18,16 +18,9 @@ export class PostComponent implements OnInit {
   constructor(private postService: PostService, private categoryService: CategoryService) { }
 
   ngOnInit() {
-    // this.getListPosts();
     this.getListPosts();
   }
 
-  // getListPosts() {
-  //   this.postService.getListPost().subscribe(data => {
-  //     console.log(data);
-  //     // this.posts = data;
-  //   });
-  // }
   getListPosts() {
     this.categoryService.getListCategory().subscribe(data => {
       this.categorys = data;
