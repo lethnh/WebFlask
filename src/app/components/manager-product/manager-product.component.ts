@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from '../product/Product';
 import { ProductService } from '../../services/product.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-manager-product',
@@ -17,7 +18,8 @@ export class ManagerProductComponent implements OnInit {
   txtFname = '';
   // tslint:disable-next-line:ban-types
   isDuplicate: Boolean = false;
-  constructor(private productService: ProductService, private route: ActivatedRoute, private toastrService: ToastrService) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute,
+              private toastrService: ToastrService, private location: Location) { }
 
   ngOnInit() {
     this.getListProduct();
@@ -64,5 +66,8 @@ export class ManagerProductComponent implements OnInit {
         this.isDuplicate = true;
       }
     });
+  }
+  goBack(): void {
+    this.location.back();
   }
 }

@@ -3,6 +3,7 @@ import { CategoryService } from '../../services/category.service';
 import { Category } from '../category/Category';
 import { ToastrService } from 'ngx-toastr';
 import { PostService } from '../../services/post.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-manager-cateogry',
@@ -17,7 +18,8 @@ export class ManagerCateogryComponent implements OnInit {
   // tslint:disable-next-line:ban-types
   isDuplicate: Boolean = false;
   txtFname = '';
-  constructor(private categoryService: CategoryService, private postService: PostService, private toastrService: ToastrService) { }
+  constructor(private categoryService: CategoryService, private postService: PostService,
+              private toastrService: ToastrService, private location: Location) { }
 
   ngOnInit() {
     this.getListCategory();
@@ -80,5 +82,8 @@ export class ManagerCateogryComponent implements OnInit {
         this.isDuplicate = true;
       }
     });
+  }
+  goBack(): void {
+    this.location.back();
   }
 }

@@ -4,12 +4,12 @@
       <h1>Categories</h1>
     </div>
     <div class="d-flex col-12 mb-5 flex-column">
-      <button class="btn btn-outline btn-default active ml-auto" id="arrangement-grid" type="button" value="gird">
-        <a routerLink="/manager-category">
-          <i class="fa fa-cog" aria-hidden="true"></i>
-        </a>
-      </button>
+
       <tabset>
+        <button class="btn btn-outline btn-default active ml-auto" id="arrangement-grid" type="button" value="gird"
+          routerLink="/manager-category">
+          <i class="fa fa-cog" aria-hidden="true"></i>
+        </button>
         <tab heading="All" (selectTab)="onSelect($event)">
           <div class="media shadow my-5 p-2" *ngFor="let item of data | paginate: { itemsPerPage: 5, currentPage: p }">
             <a routerLink="/Category/{{item.CategoryId}}/posts/{{item.id}}" class="w-25 mr-3">

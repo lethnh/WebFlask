@@ -3,6 +3,7 @@ import { PostService } from '../../services/post.service';
 import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from 'src/app/services/category.service';
 import { Category } from '../category/Category';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-manager-post',
@@ -19,7 +20,8 @@ export class ManagerPostComponent implements OnInit {
   // tslint:disable-next-line:ban-types
   isDuplicate: Boolean = false;
   txtFname = '';
-  constructor(private postService: PostService, private categoryService: CategoryService, private toastrService: ToastrService) { }
+  constructor(private postService: PostService, private categoryService: CategoryService,
+              private toastrService: ToastrService, private location: Location) { }
 
   ngOnInit() {
     this.getListPosts();
@@ -88,6 +90,9 @@ export class ManagerPostComponent implements OnInit {
     this.toastrService.error('Error', message, {
       positionClass: 'toast-top-center',
     });
+  }
+  goBack(): void {
+    this.location.back();
   }
 
 }

@@ -1,11 +1,13 @@
 <div class="mangager-category my-5">
-  <div class="text-center mb-5 text-uppercase">
-    <h1>Manager Categories</h1>
+  <div class="d-flex align-content-center justify-content-center mb-5">
+    <button (click)="goBack()" class="btn mr-auto"><i class="fas fa-arrow-left"></i> Back</button>
+    <h1 class="text-center  text-uppercase mr-auto">Manager Categories</h1>
   </div>
   <div class="row mb-5">
+
     <div class="col-12 d-flex justify-content-between align-content-center">
       <div class="form-inline mb-5 my-lg-0 ">
-        <input placeholder="Enter name" class="form-control mr-1" [(ngModel)]="txtFname"  />
+        <input placeholder="Enter name" class="form-control mr-1" [(ngModel)]="txtFname" />
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </div>
       <app-add-category [dataCategory]="categories" class="ml-auto">
