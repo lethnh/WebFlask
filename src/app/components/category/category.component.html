@@ -24,7 +24,7 @@
       <div *ngFor="let category of categories">
         <div class="media shadow mb-5"
           *ngFor="let post of category.posts | paginate: { itemsPerPage: 1, currentPage: p }">
-          <a routerLink="/Category/{{post.CategoryId}}/post/{{post.id}}" class="w-25 mr-3">
+          <a routerLink="/Category/{{post.CategoryId}}/posts/{{post.id}}" class="w-25 mr-3">
             <img src="{{post.image}}" class="align-self-start img-fluid" alt="..." />
           </a>
           <div class="media-body">
@@ -47,7 +47,7 @@
     </div>
     <div *ngIf="show===false">
       <div class="media shadow mb-5" *ngFor="let item of category | paginate: { itemsPerPage: 5, currentPage: p }">
-        <a routerLink="/Category/{{item.CategoryId}}/post/{{item.id}}" class="w-25 mr-3">
+        <a routerLink="/Category/{{item.CategoryId}}/posts/{{item.id}}" class="w-25 mr-3">
           <img src="{{item.image}}" class="align-self-start img-fluid" alt="..." />
         </a>
         <div class="media-body">
