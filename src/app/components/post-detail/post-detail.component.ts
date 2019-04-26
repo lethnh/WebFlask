@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../../services/post.service';
 import { CategoryService } from '../../services/category.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-post-detail',
@@ -13,7 +14,8 @@ export class PostDetailComponent implements OnInit {
   postRelated;
   // tslint:disable-next-line:no-inferrable-types
   p: number = 1;
-  constructor(private route: ActivatedRoute, private postService: PostService, private categoryService: CategoryService) { }
+  constructor(private route: ActivatedRoute, private postService: PostService,
+    private categoryService: CategoryService, private location: Location) { }
 
   ngOnInit() {
     this.getPost();
@@ -37,5 +39,8 @@ export class PostDetailComponent implements OnInit {
         console.log(this.postRelated);
       });
     });
+  }
+  goBack(): void {
+    this.location.back();
   }
 }

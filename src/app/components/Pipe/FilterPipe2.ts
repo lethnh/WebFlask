@@ -22,4 +22,5 @@ export class FilterPipe2 implements PipeTransform {
         });
         return result;
     }
+
 }

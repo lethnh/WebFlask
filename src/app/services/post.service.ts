@@ -22,7 +22,7 @@ export class PostService {
   }
 
   deletePost(post): Observable<Post> {
-    const url = `${this.urlAPI}/${post.id}`;
+    const url = `${this.urlAPI}/${post.CategoryId}/posts/${post.id}`;
     return this.http.delete<Post>(url);
   }
 
@@ -32,7 +32,7 @@ export class PostService {
   }
 
   editPost(post): Observable<Post> {
-    const url = `${this.urlAPI}/${post.id}`;
+    const url = `${this.urlAPI}/${post.CategoryId}/posts/${post.id}`;
     console.log(post);
     return this.http.put<Post>(url, post);
   }

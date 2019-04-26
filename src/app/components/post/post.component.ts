@@ -19,7 +19,7 @@ export class PostComponent implements OnInit {
 
   ngOnInit() {
     // this.getListPosts();
-    this.getListCategory();
+    this.getListPosts();
   }
 
   // getListPosts() {
@@ -28,7 +28,7 @@ export class PostComponent implements OnInit {
   //     // this.posts = data;
   //   });
   // }
-  getListCategory() {
+  getListPosts() {
     this.categoryService.getListCategory().subscribe(data => {
       this.categorys = data;
       this.categorys.forEach(element => {

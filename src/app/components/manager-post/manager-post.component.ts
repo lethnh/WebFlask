@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
-import { Post } from '../post/Post';
 import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from 'src/app/services/category.service';
+import { Category } from '../category/Category';
 
 @Component({
   selector: 'app-manager-post',
@@ -10,62 +10,66 @@ import { CategoryService } from 'src/app/services/category.service';
   styleUrls: ['./manager-post.component.css']
 })
 export class ManagerPostComponent implements OnInit {
-  categories;
-  posts: Post[];
+  categorys: Category[];
+  categorysPosts;
+  posts = [];
   selected;
   // tslint:disable-next-line:no-inferrable-types
-  p: number = 1
+  p: number = 1;
   // tslint:disable-next-line:ban-types
   isDuplicate: Boolean = false;
+  txtFname = '';
   constructor(private postService: PostService, private categoryService: CategoryService, private toastrService: ToastrService) { }
 
   ngOnInit() {
-    this.getListCategory();
+    this.getListPosts();
   }
-  // showDetail(id) {
-  //   this.postService.getCategory(id).subscribe(data => {
-  //     this.selected = data;
-  //   });
-  // }
+  showDetail(post) {
+    this.postService.getPost(post.id, post.CategoryId).subscribe(data => {
+      this.selected = data;
+      console.log(data);
+    });
+  }
 
-  getListCategory() {
+  getListPosts() {
     this.categoryService.getListCategory().subscribe(data => {
-      this.categories = data;
-      this.categories.forEach(element => {
-        element.posts.forEach(post => {
-          this.posts.push(post);
-          console.log(this.posts);
+      this.categorys = data;
+      this.categorys.forEach(element => {
+        this.categorysPosts = [...element.posts];
+        this.categorysPosts.forEach(elementTwo => {
+          this.posts.push(elementTwo);
         });
       });
     });
-    console.log(this.categories);
   }
 
 
-  // deleteCategory(product) {
-  //   this.postService.deleteCategory(product).subscribe(data => {
-  //     this.categories = this.categories.filter(item => item.id !== data.id);
-  //     this.showSuccess('Delete Category Successufully');
-  //   });
-  // }
-  // onSubmit(formEditCategory) {
-  //   if (formEditCategory.valid) {
-  //     const { value } = formEditCategory;
-  //     this.postService.editCategory(value).subscribe(data => {
-  //       const updateItem = this.categories.find(item => item.id === value.id);
-  //       const index = this.categories.indexOf(updateItem);
-  //       this.categories[index] = data;
-  //       this.showSuccess('Edit Category Succesfully');
-  //       document.getElementById('close-modal-2').click();
-  //     });
-  //   }
-  // }
+  deletePost(post) {
+    console.log(post);
+    this.postService.deletePost(post).subscribe(data => {
+      this.posts = this.posts.filter(item => item.id !== data.id);
+      this.showSuccess('Delete Post Successufully');
+    });
+  }
+  onSubmit(formEditPost) {
+    if (formEditPost.valid) {
+      const { value } = formEditPost;
+      console.log(value);
+      this.postService.editPost(value).subscribe(data => {
+        const updateItem = this.posts.find(item => item.id === value.id);
+        const index = this.posts.indexOf(updateItem);
+        this.posts[index] = data;
+        this.showSuccess('Edit Post Succesfully');
+        document.getElementById('close-modal-2').click();
+      });
+    }
+  }
 
-  // showSuccess(message: string) {
-  //   this.toastrService.success('Success', message, {
-  //     positionClass: 'toast-top-center',
-  //   });
-  // }
+  showSuccess(message: string) {
+    this.toastrService.success('Success', message, {
+      positionClass: 'toast-top-center',
+    });
+  }
 
   // verifyDuplicate(event) {
   //   console.log(event.target.value);
@@ -79,5 +83,11 @@ export class ManagerPostComponent implements OnInit {
   //   })
 
   // }
+
+  showErrors(message: string) {
+    this.toastrService.error('Error', message, {
+      positionClass: 'toast-top-center',
+    });
+  }
 
 }
