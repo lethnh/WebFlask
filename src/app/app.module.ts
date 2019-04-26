@@ -28,6 +28,7 @@ import { AddCategoryComponent } from './components/add-category/add-category.com
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { ManagerPostComponent } from './components/manager-post/manager-post.component';
 import { FilterPipe2 } from './components/Pipe/FilterPipe2';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 
 @NgModule({
@@ -61,7 +62,7 @@ import { FilterPipe2 } from './components/Pipe/FilterPipe2';
     HttpClientModule,
     NgxPaginationModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot()// ToastrModule added
+    ToastrModule.forRoot(), TabsModule.forRoot()// ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent]

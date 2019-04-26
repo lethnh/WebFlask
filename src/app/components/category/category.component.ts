@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
+import { TabDirective } from 'ngx-bootstrap/tabs';
 
 
 @Component({
@@ -10,6 +11,10 @@ import { CategoryService } from '../../services/category.service';
 export class CategoryComponent implements OnInit {
   category;
   categories;
+  categoryTwo;
+  data;
+  value;
+  categorysPosts;
   // tslint:disable-next-line:ban-types
   show: Boolean = true;
   txtFname = '';
@@ -17,6 +22,16 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit() {
     this.getListCategory();
+    this.categoryService.getListCategory().subscribe(data => {
+      this.data = [];
+      this.categoryTwo = data;
+      this.categoryTwo.forEach(element => {
+        this.categorysPosts = [...element.posts];
+        this.categorysPosts.forEach(elementTwo => {
+          this.data.push(elementTwo);
+        });
+      });
+    });
   }
   getListCategory() {
     this.categoryService.getListCategory().subscribe(data => {
@@ -24,16 +39,26 @@ export class CategoryComponent implements OnInit {
       console.log(data);
     });
   }
-  showCategory(id: number) {
-    if (id === 0) {
-      this.getListCategory();
-      this.show = true;
+
+  onSelect(value: TabDirective): void {
+    console.log(value);
+    if (value.heading === 'All') {
+      this.categoryService.getListCategory().subscribe(data => {
+        console.log(data);
+        this.data = [];
+        this.categoryTwo = data;
+        this.categoryTwo.forEach(element => {
+          this.categorysPosts = [...element.posts];
+          this.categorysPosts.forEach(elementTwo => {
+            this.data.push(elementTwo);
+          });
+        });
+      });
     } else {
-      this.categoryService.getCategory(id).subscribe(data => {
-        this.category = data.posts;
-        this.show = false;
+      this.value = value;
+      this.categoryService.getCategory(this.value).subscribe(data => {
+        this.data = data.posts;
       });
     }
   }
-
 }
