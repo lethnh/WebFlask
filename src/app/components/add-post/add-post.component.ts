@@ -28,6 +28,7 @@ export class AddPostComponent implements OnInit {
         console.log(data);
         this.dataPost.push(data);
       });
+      formAddPost.reset();
       this.showSuccess();
       document.getElementById('close-modal').click();
     }

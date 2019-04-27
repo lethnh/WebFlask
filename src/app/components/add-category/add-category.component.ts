@@ -23,7 +23,7 @@ export class AddCategoryComponent implements OnInit {
       const { value } = formAddCategory;
       this.categoryService.addCategory(value).subscribe(data => this.dataCategory.push(data));
       this.showSuccess();
-      formAddCategory = null;
+      formAddCategory.reset();
       document.getElementById('close-modal').click();
     }
   }
