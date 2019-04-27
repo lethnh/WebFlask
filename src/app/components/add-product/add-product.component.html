@@ -19,12 +19,15 @@
           <div class="form-group">
             <label for="">Name</label>
             <input type="text" class="form-control" placeholder="Product Name" id="name" [(ngModel)]="product.name"
-              name="name" required minlength="3" #productName="ngModel">
+              name="name" required minlength="3" maxlength="20" #productName="ngModel">
           </div>
           <div class="alert alert-danger mt-3" *ngIf="productName.dirty && productName.errors?.required">
             Product is empty
           </div>
           <div class="alert alert-danger mt-3" *ngIf="productName.dirty && productName.errors?.minlength">
+            Product is between 3 - 20 character
+          </div>
+          <div class="alert alert-danger mt-3" *ngIf="productName.dirty && productName.errors?.maxlength">
             Product is between 3 - 20 character
           </div>
           <!--Product Name-->
