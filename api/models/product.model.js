@@ -1,11 +1,11 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ProductSchema = new Schema({
-  price: Number,
-  name: String,
-  image: String,
-  description: String,
-  status: Boolean
+const mongoose = require("mongoose");
+var product = new mongoose.Schema({
+    price: Number,
+    name: String,
+    image: String,
+    description: String,
+    status: Boolean
 });
-//Export model
-module.exports = mongoose.model('Product', ProductSchema,'product');
+
+var Product = mongoose.model("Product", product, "product");
+module.exports = Product;

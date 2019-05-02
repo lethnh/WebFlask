@@ -1,8 +1,13 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-var product_controller = require('../controllers/productController');
+var controller = require("../controllers/product.controller")
 
-// GET request for list of all Authors.
-router.get('/', product_controller.product_list);
-router.post('/create', product_controller.create);
+// Get all product
+router.get("/", controller.index);
+
+// Create product
+router.post("/create", controller.create);
+
+// Find product
+router.get("/findProductById/:id", controller.findProductById);
 module.exports = router;
