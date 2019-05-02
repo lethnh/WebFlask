@@ -5,7 +5,7 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
-  <form #formAddProduct="ngForm" (submit)="onSubmit(formAddProduct)">
+  <form #formAddProduct="ngForm" (submit)="onSubmit(formAddProduct)" enctype="multipart/form-data">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -31,26 +31,64 @@
             Product is between 3 - 20 character
           </div>
           <!--Product Name-->
-          <!--Product Price-->
-          <div class="form-group">
-            <label for="">Price</label>
+
+          <div class="form-row">
+            <!--Product Price-->
+            <div class="form-group col-6">
+              <label for="">Price</label>
             <input type="number" class="form-control" placeholder="Price" [(ngModel)]="product.price" required
-              name="price" #price="ngModel">
+            name="price" #price="ngModel">
           </div>
           <div class="alert alert-danger mt-3" *ngIf="price.dirty && price.errors?.required">
             Product is empty
           </div>
           <!--Product Price-->
+
           <!--Product Reviews-->
-          <div class="form-group">
+          <div class="form-group col-6">
             <label for="">Reviews</label>
             <input type="number" class="form-control" placeholder="Reviews" [(ngModel)]="product.reviews" required
-              name="reviews" #reviews="ngModel">
+            name="reviews" #reviews="ngModel">
           </div>
           <div class="alert alert-danger mt-3" *ngIf="reviews.dirty && reviews.errors?.required">
             Review is empty
           </div>
           <!--Product Reviews-->
+        </div>
+          
+          <!--Product Description-->
+          <div class="form-group">
+            <label for="">Description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Product Description"
+              id="name" [(ngModel)]="product.description" name="description" required minlength="3" maxlength="20"
+              #productDescription="ngModel"></textarea>
+          </div>
+          <div class="alert alert-danger mt-3" *ngIf="productDescription.dirty && productDescription.errors?.required">
+            Product is empty
+          </div>
+          <div class="alert alert-danger mt-3" *ngIf="productDescription.dirty && productDescription.errors?.minlength">
+            Product is between 3 - 20 character
+          </div>
+          <!--Product Description-->
+
+          
+          <!--Product Status-->
+          <div class="form-group">
+            <label for="">Status</label>
+            <select class="custom-select" name="status" [(ngModel)]="product.status">
+              <option value="0">False</option>
+              <option value="1">True</option>
+            </select>
+          </div>
+          <!--Product Status-->
+
+          <!--Product Image-->
+          <div class="form-group">
+            <label for="">Image</label>
+            <input type="file" accept="" class="form-control" name="image" [(ngModel)]="product.image">
+          </div>
+          <!--Product Image-->
+
           <div class="modal-footer">
             <button class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button class="btn btn-primary" [disabled]="formAddProduct.invalid">Add Product</button>

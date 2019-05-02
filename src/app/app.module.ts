@@ -29,6 +29,8 @@ import { AddPostComponent } from './components/add-post/add-post.component';
 import { ManagerPostComponent } from './components/manager-post/manager-post.component';
 import { FilterPipe2 } from './components/Pipe/FilterPipe2';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
@@ -53,6 +55,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     AddPostComponent,
     ManagerPostComponent,
     FilterPipe2,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

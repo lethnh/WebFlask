@@ -34,7 +34,7 @@ export class ProductComponent implements OnInit {
 
   deleteProduct(product) {
     this.productService.deleteProduct(product).subscribe(data => {
-      this.products = this.products.filter(item => item.id !== data.id);
+      this.products = this.products.filter(item => item._id !== data._id);
       this.showSuccess('Delete Product Successufully');
     });
   }

@@ -19,7 +19,7 @@ export class ManagerProductComponent implements OnInit {
   // tslint:disable-next-line:ban-types
   isDuplicate: Boolean = false;
   constructor(private productService: ProductService, private route: ActivatedRoute,
-              private toastrService: ToastrService, private location: Location) { }
+    private toastrService: ToastrService, private location: Location) { }
 
   ngOnInit() {
     this.getListProduct();
@@ -33,9 +33,14 @@ export class ManagerProductComponent implements OnInit {
     this.productService.getListProduct().subscribe(data => this.products = data);
   }
 
-  deleteProduct(product) {
-    this.productService.deleteProduct(product).subscribe(data => {
-      this.products = this.products.filter(item => item.id !== data.id);
+  deleteProduct(id) {
+    debugger;
+    this.productService.deleteProduct(id).subscribe(data => {
+      // this.products = this.products.filter(item => {
+      //   // item._id !== data._id;
+      // }
+      console.log(data);
+      // );
       this.showSuccess('Delete   Product Succesfully');
     });
   }

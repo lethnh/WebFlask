@@ -1,5 +1,5 @@
 var Account = require("../models/account.model");
-// var md5 = require("md5");
+var md5 = require("md5");
 
 module.exports.create = async function(req, res) {
     var hashPassword = md5(req.body.password);

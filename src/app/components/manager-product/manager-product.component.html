@@ -31,11 +31,11 @@
           <td>{{ product.price }}</td>
           <td><img src="{{ product.image }}" alt="" style="height: 30px;"></td>
           <td>{{ product.reviews }}</td>
-          <td> <button class="btn btn-primary ml-auto" (click)="showDetail(product.id)" data-toggle="modal"
+          <td> <button class="btn btn-primary ml-auto" (click)="showDetail(product._id)" data-toggle="modal"
               data-target="#demo"><i class="fa fa-pencil" aria-hidden="true"></i>
               Sửa
             </button></td>
-          <td> <button (click)="deleteProduct(product)" class="btn btn-danger ml-auto"><i class="fa fa-trash-o"
+          <td> <button (click)="deleteProduct(product._id)" class="btn btn-danger ml-auto"><i class="fa fa-trash-o"
                 aria-hidden="true"></i> Xóa
             </button></td>
         </tr>
@@ -61,7 +61,7 @@
         <div class="modal-body">
           <div *ngIf="selected">
             <!--Product Name-->
-            <input type="hidden" id="id" [(ngModel)]="selected.id" name="id" #id="ngModel">
+            <input type="hidden" id="id" [(ngModel)]="selected._id" name="id" #id="ngModel">
             <div class="form-group">
               <label for="">Name</label>
               <input type="text" class="form-control" placeholder="Product Name" id="name" [(ngModel)]="selected.name"

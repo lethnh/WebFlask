@@ -12,6 +12,8 @@ import { ManagerCateogryComponent } from './components/manager-cateogry/manager-
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { CategoryComponent } from './components/category/category.component';
 import { ManagerPostComponent } from './components/manager-post/manager-post.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'product', component: ProductComponent, },
   { path: 'news', component: PostComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'manager-product', component: ManagerProductComponent },
   { path: 'manager-category', component: ManagerCateogryComponent },

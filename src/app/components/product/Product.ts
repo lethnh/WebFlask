@@ -1,7 +1,10 @@
 export class Product {
-    id: number;
+    // tslint:disable-next-line:variable-name
+    _id: string;
     name: string;
-    image: string;
     price: number;
-    reviews: boolean;
+    image: string;
+    description: string;
+    status: boolean;
+    review: number;
 }

@@ -18,11 +18,16 @@ export class AddProductComponent implements OnInit {
 
   onSubmit(formAddProduct) {
     if (formAddProduct.valid) {
+      debugger;
       const { value } = formAddProduct;
-      this.productService.addProduct(value).subscribe(data => this.dataProduct.push(data));
+      console.log(value);
+      this.productService.addProduct(value).subscribe(data => {
+        this.dataProduct.push(data);
+        console.log(data);
+      }
+      );
       this.showSuccess();
       formAddProduct.reset();
-      console.log(formAddProduct);
       document.getElementById('close-modal').click();
     }
   }
