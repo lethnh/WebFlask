@@ -11,7 +11,7 @@ export class ProductService {
   // private data = DataProduct;
   private data = [...DataProduct];
   private urlAPI = 'https://5ca73f898e58df0014602f4a.mockapi.io/products';
-  private url = 'http://localhost:6969/api/product/';
+  private url = '/api/product/';
   constructor(private http: HttpClient) { }
 
   addProduct(product): Observable<Product> {
