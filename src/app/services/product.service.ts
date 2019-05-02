@@ -11,14 +11,15 @@ export class ProductService {
   // private data = DataProduct;
   private data = [...DataProduct];
   private urlAPI = 'https://5ca73f898e58df0014602f4a.mockapi.io/products';
+  private url = 'http://localhost:4200/api/product/';
   constructor(private http: HttpClient) { }
 
   addProduct(product): Observable<Product> {
     return this.http.post<Product>(this.urlAPI, product);
   }
 
-  getListProduct(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.urlAPI);
+  getListProduct(): Observable<any> {
+    return this.http.get(this.url);
   }
 
   deleteProduct(product): Observable<Product> {

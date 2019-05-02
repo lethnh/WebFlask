@@ -1,16 +1,29 @@
-//Install express server
-const express = require('express');
-const path = require('path');
-
+const http = require('http');
+const express = require('express')
+const mongoose = require('mongoose');
 const app = express();
+const bodyParser = require('body-parser')
+const cors = require('cors');
+const wiki = require('./api/routes/wiki');
+const indexRouter = require('./api/routes/product.router');
 
-// Serve only the static files form the dist directory
-app.use(express.static('./dist/crud-angular'));
 
-app.get('/*', function (req, res) {
+const hostname = '127.0.0.1';
+const port = 6969;
 
-  res.sendFile(path.join(__dirname, '/dist/crud-angular/index.html'));
+app.use('/wiki', wiki);
+app.use('/api/product', indexRouter);
+
+const mongoDB = 'mongodb://localhost:27017/shopping';
+mongoose.connect(mongoDB, {
+  useNewUrlParser: true
 });
 
-// Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
